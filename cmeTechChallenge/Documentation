@@ -1,0 +1,51 @@
+Belfast Grad Program - Tech Challenge(Prime) - Holly Bailey
+
+Plan :-
+I read through the brief and picked out the required information.
+
+Inputs:
+Input 1 - Username (No validation explicitly mentioned but check for bad inputs eg stop people being able to input code.)
+Input 2 - Numeric value (No spaces or letters, try to use a factory pattern)
+Input 3 - File (No naming convention, should hold unique values)
+
+Outputs:
+Output 1 - Logs different severity based on if there is an input error or if it is performing correctly.
+Output 2 - Cache holding unique primes (most likely an array)
+Output 3 - File again holding the unique primes (need to make sure there is no duplicates in the file)
+
+Ways to check for prime numbers:
+1 is never a prime (special case), 2 and 3 are always prime.
+2 methods of looping through to check for other factors.
+First is checking every number upto half of the number eg if checking 100 you would check upto 50.
+Second is more efficient by checking up to the square root of a number this would rely on a library to do.
+The second can also be made quicker by knowing that every prime number fits into 6k+1 or 6k-1
+As the brief asks for the logic, I have decide to partially use the second method but without relying on the java math library.
+Todo this I will loop though each number upto half way but if the number is not a factor, I will then check its square and see if that is greater than the number we are checking.
+E.G. for 17 the loop will be looking at all numbers up to 9, however when we get to 5 it will stop as 5*5 is 25 which is bigger than 17.
+
+
+Possible Packages and their files:
+Runner - PrimeRunner (main file that is used to start, defines the file name)
+Handler - Reader (File reader), Writer (File writer)
+Calc - PrimeCalculator
+Model - holds the factory patterns
+
+Possible Methods:
+Method 1 - Get the user inputs
+Method 2 - Get the file inputs
+Method 3 - Calculate primes *
+Method 4 - Append to file
+Method 5 - Get the numbers from the sequence
+
+Tests:
+Test 1 - User input validations (Correct inputs)
+Test 2 - User input validations (erroneous)
+Test 3 - File reader (correct pathway with data)
+Test 4 - File reader (correct pathway without data)
+Test 5 - File reader (incorrect pathway)
+
+Assumptions:
+Assumption 1 - Eventhough a username is taken it is not used for anything, I may use in the output log.
+Assumption 2 - How many times should this run? My plan is on start up it runs once and then gives the option to continue and run again.
+Assumption 3 - File name can be hard coded as this is a basic app and does not really require a configurable path name.
+Assumption 4 - File only needs to be read once at the start of the application. File is written to after each set of numbers is checked. Cache holds all.
