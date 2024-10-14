@@ -26,13 +26,15 @@ public class PrimeNumbers {
     public void getInputs(String sequence){
         Sequence checkedSeq = factoryClass.checkSequence(sequence);
         if (!checkedSeq.isCorrectSeq()){
-            log.error("Error: " + checkedSeq.getMessage());
+            log.error("Sequence incorrect: " + checkedSeq.getMessage());
+            log.debug("System exiting");
             System.exit(1);
         }
     }
 
     public ArrayList<Integer> getNumbersFromSequence(String sequence){
         ArrayList<Integer> numsToCheck = new ArrayList<>();
+        log.debug("Splitting sequence into its array of numbers");
         for(int i=0; i<sequence.length(); i++){
             for(int j=i+1; j<sequence.length()+1;j++){
                 String subNum = sequence.substring(i,j);
@@ -48,12 +50,16 @@ public class PrimeNumbers {
         ArrayList<Integer> primesFound = new ArrayList<>();
         ArrayList<String> newPrimesFound = new ArrayList<>();
 
+        log.debug("Checking each number to see if its prime");
+
         for(Integer num : numsToCheck){
             if (primesFound.contains(num)) {
                 log.info("Duplicate prime found, only outputting once");
             } else if (knownPrimeNums.contains(num.toString())){
+                log.debug("Number found in cache");
                 primesFound.add(num);
             } else {
+                log.debug("Number being checked by calculations");
                 if (calculatePrime(num)){
                     primesFound.add(num);
                     newPrimesFound.add(num.toString());

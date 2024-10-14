@@ -16,6 +16,7 @@ public class PrimeRunner {
     Scanner scanner = new Scanner(System.in);
 
     public ArrayList<String> startUp(String fileName){
+        log.debug("Entering startup");
         ArrayList<String> knownPrimes = fileReader.readFile(fileName);
 
         System.out.println("Enter Username (letters and numbers only): ");

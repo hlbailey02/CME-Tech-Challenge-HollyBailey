@@ -22,7 +22,7 @@ public class PrimeWriter {
             }
             bwriter.close();
         } catch (Exception e) {
-            log.error(Arrays.toString(e.getStackTrace()));
+            log.error("Exception found: "+ e );
         }
         log.info("Primes written to file");
     }

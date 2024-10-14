@@ -13,6 +13,7 @@ public class FileReader {
 
     public ArrayList<String> readFile(String fileName){
         log.info("Reading file");
+        log.debug("Reading file at " + fileName);
         ArrayList<String> fileOutputs = new ArrayList<>();
         try{
             File primeFile = new File(fileName);
@@ -24,6 +25,7 @@ public class FileReader {
             reader.close();
         } catch (FileNotFoundException e) {
             log.info("No input file found, Cache not populated");
+            log.debug("Empty array list returned");
             return new ArrayList<>();
         }
 

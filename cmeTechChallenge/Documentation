@@ -49,3 +49,17 @@ Assumption 1 - Eventhough a username is taken it is not used for anything, I may
 Assumption 2 - How many times should this run? My plan is on start up it runs once and then gives the option to continue and run again.
 Assumption 3 - File name can be hard coded as this is a basic app and does not really require a configurable path name.
 Assumption 4 - File only needs to be read once at the start of the application. File is written to after each set of numbers is checked. Cache holds all.
+Assumption 5 - We should avoid using the pre built functions for checking prime numbers
+
+Logging:
+Info logs - highlighting important steps
+Error logs - In the most common fail places to inform what happened
+Debug logs - Additional information so issues can be tracked via logs to see what should be happening
+
+Final File Structure:
+GradTechChallengeApplication - Main method
+PrimeRunner - Has startup method to read the file and take in a username, Also has a call method which takes in the sequence then calls the prime number file and then gets a response if to go again and feeds that back to main method.
+PrimeNumbers - Holds all the calculations, will first call factory class to verify the sequence, if no issues will split sequence down into an array, each number is then looped through checking if we already have found it as a prime in this sequence, its in our cache or will use mathematical logic to work out if prime.
+FileReader - Just reads the data from the file and puts in cache
+PrimeWriter - Writes only newly found primes to the file.
+model Directory - This holds the factory class and patterns. Called to check if a sequence is correct.
